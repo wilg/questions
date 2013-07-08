@@ -5,7 +5,11 @@ Questions::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  resources :queries
+  resources :queries do
+    member do
+      post :respond_to
+    end
+  end
 
   root "queries#new"
 

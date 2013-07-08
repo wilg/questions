@@ -1,0 +1,13 @@
+- @query.questions.each_with_index do |question_hash, i|
+  - hash = question_hash.with_indifferent_access
+  - question = Question.find(hash[:question_id])
+  %h4.muted Question #{i + 1}
+  .well.question
+    %h3= question.text 
+    - if hash[:value]
+      .answer
+        %strong.lead= query_question_value_description(hash[:value])
+    - else 
+      = link_to "Yes", respond_to_query_path(@query, question_id: question.id, value: 1), class: "btn btn-success btn-large", method: :post
+      = link_to "No", respond_to_query_path(@query, question_id: question.id, value: -1), class: "btn btn-danger btn-large", method: :post
+      = link_to "Don't Know", respond_to_query_path(@query, question_id: question.id, value: 0), class: "btn btn-large", method: :post
