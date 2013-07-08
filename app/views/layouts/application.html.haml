@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title Questions
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          = link_to "20 Questions!", root_url, class: :brand
+          %ul.nav
+            %li.active
+              %a{:href => "#"} Home
+            %li
+              %a{:href => "#"} Link
+            %li
+              %a{:href => "#"} Link
+    .container
+      = yield
